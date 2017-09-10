@@ -19,12 +19,15 @@ export class SignupComponent implements OnInit {
     constructor(private authService: AuthService) {}
 
     onSubmit() {
+      //Assume daily med starting first dose in 1-6 hours
+        var randomNum = Math.floor(Math.random()*5*60*60);
         const user = new User(
             this.myForm.value.email,
             this.myForm.value.password,
             this.myForm.value.firstName,
             this.myForm.value.lastName,
-            this.myForm.value.emergencyContact
+            this.myForm.value.emergencyContact,
+            Date.now() + randomNum;
         );
         this.authService.signup(user)
             .subscribe(
@@ -37,7 +40,7 @@ export class SignupComponent implements OnInit {
     isLoggedIn() {
         return this.authService.isLoggedIn();
     }
-
+    
     ngOnInit() {
         this.myForm = new FormGroup({
             firstName: new FormControl(null, Validators.required),
@@ -50,7 +53,7 @@ export class SignupComponent implements OnInit {
             emergencyContact: new FormControl(null, [
                 Validators.required,
                 Validators.pattern("[0-9]{9,12}")
-            ])
+            ]),
         });
     }
 }

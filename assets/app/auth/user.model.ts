@@ -4,5 +4,5 @@ export class User {
                 public firstName?: string,
                 public lastName?: string,
                 public emergencyContact: number,
-                public time: Date) {}
+                public medTime: number) {}
 }

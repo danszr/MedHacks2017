@@ -11,7 +11,8 @@ router.post('/', function (req, res, next) {
         lastName: req.body.lastName,
         password: bcrypt.hashSync(req.body.password, 10),
         email: req.body.email,
-        emergencyContact: req.body.emergencyContact
+        emergencyContact: req.body.emergencyContact,
+        medTime: req.body.medTime
     });
     user.save(function(err, result) {
         if (err) {
@@ -52,6 +53,21 @@ router.post('/signin', function(req, res, next) {
             message: 'Successfully logged in',
             token: token,
             userId: user._id
+        });
+    });
+});
+
+router.get('/getNextDoseTime', function(req, res, next) {
+    User.findOne({email: req.body.email}, 'medTime', function(err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        res.status(200).json({
+            message: 'Success',
+            time: user.medTime
         });
     });
 });

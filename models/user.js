@@ -8,6 +8,7 @@ var schema = new Schema({
     password: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     emergencyContact: {type: String, required: true, unique: true},
+    medTime: {type: Number},
 });
 
 schema.plugin(mongooseUniqueValidator);

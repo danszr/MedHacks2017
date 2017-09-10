@@ -78,3 +78,12 @@ input.ng-invalid.ng-touched {
   top: 60px;
   position: relative;
 }
+
+.second-btn {
+  top: 50px;
+}
+
+#countdown {
+  text-align: center;
+  font-size: 70px;
+}

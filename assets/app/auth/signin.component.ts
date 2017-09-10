@@ -14,7 +14,7 @@ export class SigninComponent {
     myForm: FormGroup;
     sosClicked: boolean;
 
-    constructor(private authService: AuthService, , private twilioService: TwilioService, private router: Router) {}
+    constructor(private authService: AuthService, private router: Router) {}
 
     onSubmit() {
         const user = new User(this.myForm.value.email, this.myForm.value.password);
@@ -41,6 +41,9 @@ export class SigninComponent {
     }
 
     ngOnInit() {
+      // if (isLoggedIn()) {
+      //   router.navigateByUrl("/auth/timer");
+      // }
         this.myForm = new FormGroup({
             email: new FormControl(null, [
                 Validators.required,

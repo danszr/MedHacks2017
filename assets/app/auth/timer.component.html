@@ -1,0 +1,9 @@
+<div class="col-md-8 col-md-offset-2">
+  <h2 class="sign-up-title">Your next dose is in</h2>
+  <div id="countdown"></div>
+  <div class="btn btn-primary logout" *ngIf="isLoggedIn()" [routerLink]="['/auth/logout']">Log out</div>
+  <div class="sos-btn second-btn" (click)="sos()">
+    <div class="sos-text" *ngIf="!sosClicked">SOS</div>
+    <div class="calling-911" *ngIf="sosClicked && !emergencyTexted">Calling 911 and texting emergency contact...</div>
+  </div>
+</div>
