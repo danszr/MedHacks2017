@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 
 import { User } from "./user.model";
 import { AuthService } from "./auth.service";
+import { TwilioService } from "./twilio.service";
 
 @Component({
     selector: 'app-signin',
@@ -11,8 +12,9 @@ import { AuthService } from "./auth.service";
 })
 export class SigninComponent {
     myForm: FormGroup;
+    sosClicked: boolean;
 
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(private authService: AuthService, , private twilioService: TwilioService, private router: Router) {}
 
     onSubmit() {
         const user = new User(this.myForm.value.email, this.myForm.value.password);
@@ -26,6 +28,16 @@ export class SigninComponent {
                 error => console.error(error)
             );
         this.myForm.reset();
+        this.sosClicked = false;
+    }
+
+    isLoggedIn() {
+        return this.authService.isLoggedIn();
+    }
+
+    sos() {
+      this.sosClicked = true;
+      // this.twilioService.sendSMS();
     }
 
     ngOnInit() {

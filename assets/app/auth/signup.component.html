@@ -1,4 +1,5 @@
 <div class="col-md-8 col-md-offset-2">
+  <h2 class="sign-up-title">Register for Pill Bank</h2>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="firstName">First Name</label>
@@ -17,7 +18,7 @@
                     formControlName="lastName">
         </div>
         <div class="form-group">
-            <label for="email">Mail</label>
+            <label for="email">Email</label>
             <input
                     type="email"
                     id="email"
@@ -33,16 +34,25 @@
                     formControlName="password">
         </div>
         <div class="form-group">
-            <label for="firstName">Emergency Contact</label>
+            <label for="firstName">Emergency Contact Phone Number</label>
             <input
-                    type="text"
+                    type="tel"
                     id="Emergency Contact"
                     class="form-control"
                     formControlName="emergencyContact">
         </div>
+
         <button
                 class="btn btn-primary"
                 type="submit"
                 [disabled]="!myForm.valid">Submit</button>
+        <div class="etc-login-form">
+          <!-- <div class="forgot-Password">
+            <a (click)="forgotPassword()">Forgot your password?</a>
+          </div> -->
+          <div class="already-have" *ngIf="!isLoggedIn()">Already have an account?</div>
+          <div class="btn btn-primary signin" *ngIf="!isLoggedIn()" [routerLink]="['/auth/signin']">Sign in</div>
+          <div class="btn btn-primary logout" *ngIf="isLoggedIn()" [routerLink]="['/auth/logout']">Log out</div>
+        </div>
     </form>
 </div>

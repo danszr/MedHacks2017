@@ -6,7 +6,12 @@ import { User } from "./user.model";
 
 @Component({
     selector: 'app-signup',
-    templateUrl: './signup.component.html'
+    templateUrl: './signup.component.html',
+    styles: [`
+        .signup {
+          margin-top: 20px;
+        }
+      `]
 })
 export class SignupComponent implements OnInit {
     myForm: FormGroup;
@@ -18,7 +23,8 @@ export class SignupComponent implements OnInit {
             this.myForm.value.email,
             this.myForm.value.password,
             this.myForm.value.firstName,
-            this.myForm.value.lastName
+            this.myForm.value.lastName,
+            this.myForm.value.emergencyContact
         );
         this.authService.signup(user)
             .subscribe(
@@ -26,6 +32,10 @@ export class SignupComponent implements OnInit {
                 error => console.error(error)
             );
         this.myForm.reset();
+    }
+
+    isLoggedIn() {
+        return this.authService.isLoggedIn();
     }
 
     ngOnInit() {
@@ -36,7 +46,11 @@ export class SignupComponent implements OnInit {
                 Validators.required,
                 Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
             ]),
-            password: new FormControl(null, Validators.required)
+            password: new FormControl(null, Validators.required),
+            emergencyContact: new FormControl(null, [
+                Validators.required,
+                Validators.pattern("[0-9]{9,12}")
+            ])
         });
     }
 }

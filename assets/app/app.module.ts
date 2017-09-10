@@ -4,25 +4,23 @@ import { HttpModule } from "@angular/http";
 
 import { AppComponent } from "./app.component";
 import { AuthenticationComponent } from "./auth/authentication.component";
-import { HeaderComponent } from "./header.component";
+// import { HeaderComponent } from "./header.component";
 import { routing } from "./app.routing";
 import { AuthService } from "./auth/auth.service";
 import { ErrorComponent } from "./errors/error.component";
 import { ErrorService } from "./errors/error.service";
-import { MessageModule } from "./messages/message.module";
 
 @NgModule({
     declarations: [
         AppComponent,
         AuthenticationComponent,
-        HeaderComponent,
+        // HeaderComponent,
         ErrorComponent
     ],
     imports: [
         BrowserModule,
         routing,
-        HttpModule,
-        MessageModule
+        HttpModule
     ],
     providers: [AuthService, ErrorService],
     bootstrap: [AppComponent]

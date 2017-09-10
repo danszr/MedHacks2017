@@ -1,7 +1,8 @@
 <div class="col-md-8 col-md-offset-2">
+    <h2 class="sign-in-title">Sign In to Pill Bank</h2>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="email">Mail</label>
+            <label for="email">Email</label>
             <input
                     type="email"
                     id="email"
@@ -16,14 +17,22 @@
                     class="form-control"
                     formControlName="password">
         </div>
-        <div class="etc-login-form">
-          <div>
-            <a href="url">Forgot your password?</a>
-          </div>
-        </div>
+
         <button
                 class="btn btn-primary"
                 type="submit"
                 [disabled]="!myForm.valid">Submit</button>
+        <div class="etc-login-form">
+          <!-- <div class="forgot-Password">
+            <a (click)="forgotPassword()">Forgot your password?</a>
+          </div> -->
+          <div class="dont-have" *ngIf="!isLoggedIn()">Don't have an account?</div>
+          <div class="btn btn-primary signup" *ngIf="!isLoggedIn()" [routerLink]="['/auth/signup']">Sign up</div>
+          <div class="btn btn-primary logout" *ngIf="isLoggedIn()" [routerLink]="['/auth/logout']">Log out</div>
+          <div class="sos-btn" (click)="sos()">
+            <div class="sos-text" *ngIf="!sosClicked">SOS</div>
+            <div class="calling-911" *ngIf="sosClicked && !emergencyTexted">Calling 911 and texting emergency contact...</div>
+          </div>
+        </div>
     </form>
 </div>
