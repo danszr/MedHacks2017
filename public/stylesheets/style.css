@@ -82,6 +82,9 @@ input.ng-invalid.ng-touched {
 .second-btn {
   top: 50px;
 }
+.second-btn:active {
+  top: 53px;
+}
 
 #countdown {
   text-align: center;

@@ -32,16 +32,16 @@ export class AuthService {
             });
     }
 
-    getNextDoseTime(user: User) {
-        const body = JSON.stringify(user);
-        const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.get('http://localhost:3000/user/getNextDoseTime', body, {headers: headers})
-            .map((response: Response) => response.json())
-            .catch((error: Response) => {
-                this.errorService.handleError(error.json());
-                return Observable.throw(error.json());
-            });
-    }
+    // getNextDoseTime(user: User) {
+    //     const body = JSON.stringify(user);
+    //     const headers = new Headers({'Content-Type': 'application/json'});
+    //     return this.http.get('http://localhost:3000/user/getNextDoseTime', body, {headers: headers})
+    //         .map((response: Response) => response.json())
+    //         .catch((error: Response) => {
+    //             this.errorService.handleError(error.json());
+    //             return Observable.throw(error.json());
+    //         });
+    // }
 
     logout() {
         localStorage.clear();

@@ -30,12 +30,12 @@ export class TimerComponent {
 
     ngOnInit() {
       var countDownDate = new Date("Sep 11, 2017 15:37:25").getTime();
-      this.authService.getNextDoseTime()
-            .subscribe(
-                (time: time) => {
-                    var countDownDate = time;
-                }
-            );
+      // this.authService.getNextDoseTime()
+      //       .subscribe(
+      //           (time: time) => {
+      //               var countDownDate = time;
+      //           }
+      //       );
 
       // Update the count down every 1 second
       var x = setInterval(function() {

@@ -12,6 +12,7 @@ import { AuthService } from "./auth.service";
                     <li routerLinkActive="active" *ngIf="isLoggedIn()"><a [routerLink]="['logout']">Logout</a></li>
                 </ul>-->
             </nav>
+            <img src="assets/images/therealdealportfoliohero.jpg" height="50px">
         </header>
         <div class="row spacing">
            <router-outlet></router-outlet>

@@ -57,19 +57,19 @@ router.post('/signin', function(req, res, next) {
     });
 });
 
-router.get('/getNextDoseTime', function(req, res, next) {
-    User.findOne({email: req.body.email}, 'medTime', function(err, user) {
-        if (err) {
-            return res.status(500).json({
-                title: 'An error occurred',
-                error: err
-            });
-        }
-        res.status(200).json({
-            message: 'Success',
-            time: user.medTime
-        });
-    });
-});
+// router.get('/getNextDoseTime', function(req, res, next) {
+//     User.findOne({email: req.body.email}, 'medTime', function(err, user) {
+//         if (err) {
+//             return res.status(500).json({
+//                 title: 'An error occurred',
+//                 error: err
+//             });
+//         }
+//         res.status(200).json({
+//             message: 'Success',
+//             time: user.medTime
+//         });
+//     });
+// });
 
 module.exports = router;
